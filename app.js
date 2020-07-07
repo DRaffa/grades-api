@@ -27,7 +27,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(
   cors({
-    origin: ['http://localhost:8080', 'http://localhost:3000'],
+    origin: process.env.URLAPP,
   })
 );
 
@@ -38,5 +38,5 @@ app.get('/', (req, res) => {
 });
 
 app.listen(process.env.PORT || 8081, () => {
-  logger.info(`Servidor em execucao na porta ${process.env.PORT}`);
+  logger.info(`Servidor em execucao na porta ${process.env.PORT} - cors ${process.env.URLAPP}`);
 });
